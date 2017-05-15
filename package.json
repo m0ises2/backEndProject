@@ -1,0 +1,28 @@
+{
+  "name": "recaudia_backend",
+  "version": "0.1.0",
+  "description": "Proyecto para vacante",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m0ises2/backEndProject.git"
+  },
+  "author": "Moises Alvarado <moisesalvarado84@gmail.com> (https://github.com/m0ises2)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/m0ises2/backEndProject/issues"
+  },
+  "homepage": "https://github.com/m0ises2/backEndProject#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
