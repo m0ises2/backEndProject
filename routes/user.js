@@ -10,12 +10,15 @@ const userRouter = express.Router();
 // GET Users:
 userRouter.get('/', userCtrl.getAllUsers);
 // GET an user:
-//userRouter.get('/:slug');
+//userRouter.get('/:email', userCtrl.getUserBySlug);
 // POST User:
-//userRouter.post('/',);
+userRouter.post('/', userCtrl.saveUser);
 // Update User:
-//userRouter.put('/:slug',);
+userRouter.put('/:userId', userCtrl.updateUser);
 // Delete User:
-//userRouter.delete('/:slug',);
+userRouter.delete('/:userId', userCtrl.deleteUSer);
+// Login:
+userRouter.post('/login', userCtrl.canLogin);
+
 
 module.exports = userRouter;
