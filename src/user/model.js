@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-
 const userSchema = Schema({
   fullname: {
     type: String,
@@ -20,12 +19,12 @@ const userSchema = Schema({
   },
   createdAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
     required: true
   },
   updatedAt: {
     type: Date,
-    default: Date.now(),
+    default: Date.now,
     required: true
   },
   client: {

@@ -38,7 +38,7 @@ const donorSchema = Schema({
 		required: true
   },
   createdAt: {
-    type: Datetype: Date,
+    type: Date,
     default: Date.now
   },
   updatedAt: {

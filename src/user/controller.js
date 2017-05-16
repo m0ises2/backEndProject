@@ -7,7 +7,7 @@ function getAllUsers( req, res ) {
     if (!users) return res.status(404).send({message: `No existen Usuarios`});
 
     res.status(200).send({ usuarios: users });
-  })
+  });
 };
 
 function saveUser( req, res ) {
@@ -59,7 +59,7 @@ function canLogin( req, res ) {
   let loginInfo = req.body;
   let encryptedPass = SHA256(loginInfo.password).toString();
 
-  userModel.findOne({ 'email': loginInfo.email, 'client': loginInfo.client }, (err, user) => {
+  /*userModel.findOne({ 'email': loginInfo.email, 'client': loginInfo.client }, (err, user) => {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${error}`});
     if (!user) return res.status(200).send({ acceptedLogin: false });
 
@@ -67,9 +67,14 @@ function canLogin( req, res ) {
     if ( user.password === encryptedPass ) return res.status(200).send({ acceptedLogin: true });
 
     res.status(200).send({ acceptedLogin: false });
-    
-  });
 
+  });*/
+
+  if (loginInfo.client === process.env.CLIENT && loginInfo.email === process.env.EMAIL && SHA256(loginInfo.password).toString() === SHA256(process.env.PASSWORD).toString()) {
+    res.status(200).send({ acceptedLogin: true });
+  } else {
+    res.status(200).send({ acceptedLogin: false });
+  }
 }
 
 module.exports = {
