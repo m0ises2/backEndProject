@@ -3,7 +3,7 @@
 ### Instrucciones de uso
   1. Clonar el proyecto en el directorio de su preferencia.
   2. Ejecutar en consola el comando `npm install` para instalar todas las dependencias requeridas.
-  3. Ejecutar en consola el comando `mongod` para levantar la instancia mongoDB.
+  3. En otra pestaña de consola, ejecutar `mongod` para levantar una instancia de mongoDB.
   4. Ejecutar en consola el comando `npm start` (automáticamente configura las variables de entorno para el inicio de sesión).
   5. Iniciar sesión.
 
