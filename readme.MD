@@ -7,8 +7,9 @@
   1. Clonar el proyecto en el directorio de su preferencia.
   2. Ejecutar en consola el comando `npm install` para instalar todas las dependencias requeridas.
   3. En otra pestaña de consola, ejecutar `mongod` para levantar una instancia de mongoDB.
-  4. Ejecutar en consola el comando `npm start`. Se configurarán automáticamente las variables de entorno necesarias.
-  5. Deberia ver en consola el siguiente mensaje: "Connected to database. Server Up and Running".
+  4. Crear archivo config.js
+  5. Ejecutar en consola el comando `npm start`. Se configurarán automáticamente las variables de entorno necesarias.
+  6. Deberia ver en consola el siguiente mensaje: "Connected to database. Server Up and Running".
 
 ### Archivo config.js:
   1. Crear en el directorio raíz del proyecto un archivo config.js con la siguiente estructura:
