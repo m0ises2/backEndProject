@@ -15,6 +15,7 @@ function saveUser( req, res ) {
   let user = new userModel();
   user.fullname = req.body.fullname;
   user.email = req.body.email;
+  // Encrypted Password with SHA256:
   user.password = SHA256(req.body.password);
   user.client = req.body.client;
 
@@ -69,12 +70,17 @@ function canLogin( req, res ) {
     res.status(200).send({ acceptedLogin: false });
 
   });*/
-  
-  //console.log(encryptedPass);
-  if (loginInfo.client === process.env.CLIENT && loginInfo.email === process.env.EMAIL && SHA256(loginInfo.password).toString() === SHA256(process.env.PASSWORD).toString()) {
+
+  if (loginInfo.client === process.env.CLIENT &&
+      loginInfo.email === process.env.EMAIL &&
+      SHA256(loginInfo.password).toString() === SHA256(process.env.PASSWORD).toString()) {
+
     res.status(200).send({ acceptedLogin: true });
+
   } else {
+
     res.status(200).send({ acceptedLogin: false });
+    
   }
 }
 

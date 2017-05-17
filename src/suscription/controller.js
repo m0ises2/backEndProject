@@ -1,4 +1,5 @@
 const suscripModel = require('./model');
+const donorModel = require('../donor/model');
 const excel = require('node-excel-export');
 let shortid = require('shortid');
 
@@ -50,7 +51,7 @@ function createExcel( data ) {
       width: 90
     },
     initData: {
-      displayName: 'Primer Cobro',
+      displayName: 'First charge',
       headerStyle: styles.headerDark,
       width: 120
     }
@@ -86,7 +87,7 @@ function getAllSuscriptions( req, res ) {
     if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`});
     if (!suscrips) return res.status(404).send({message: `No existen Suscripciones`});
 
-    res.status(200).send({ suscripciones: suscrips });
+    res.status(200).send({ suscriptions: suscrips });
   });
 };
 
@@ -94,7 +95,6 @@ function saveSuscription( req, res ) {
   let suscript = new suscripModel();
 
   suscript.suscriptionId = shortid.generate();
-  suscript.donorId = req.body.donorId;
   suscript.amount = req.body.amount;
   suscript.typeCard = req.body.typeCard;
   suscript.brandCard = req.body.brandCard;
@@ -102,10 +102,17 @@ function saveSuscription( req, res ) {
   suscript.initData = req.body.initData;
   suscript.createdAt = new Date();
 
-  suscript.save( (err, docStored) => {
-    if (err) return res.status(500).send(`Error al guardar el user en la base de datos ${err}`);
+  donorModel.findOne({ donorId: req.body.donorId }, (err, doc) => {
+    if(err) return res.status(500).send({message: `Error al guardar la suscripcion en la base de datos ${err}`});
 
-    res.status(200).send({ suscription: docStored });
+    suscript.donorId = doc._id;
+
+    suscript.save( (err, docStored) => {
+      if (err) return res.status(500).send(`Error al guardar la suscripcion en la base de datos ${err}`);
+
+      res.status(200).send({ suscription: docStored });
+    });
+
   });
 };
 
