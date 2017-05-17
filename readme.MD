@@ -16,7 +16,7 @@
   ```
   module.exports = {
     port: 3000,
-    db:  URL a la base de datos. Ejemplo: 'mongodb://localhost:27017/recaudia'
+    db:  URL a la base de datos. Ejemplo: 'mongodb://localhost:27017/dbtest'
   };
   ```
 # Frontend
