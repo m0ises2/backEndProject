@@ -1,5 +1,8 @@
 # Backend
 
+### Requerimientos
+  1. Tener nodeJS instalado.
+
 ### Instrucciones de instalación
   1. Clonar el proyecto en el directorio de su preferencia.
   2. Ejecutar en consola el comando `npm install` para instalar todas las dependencias requeridas.
