@@ -7,7 +7,7 @@
   1. Clonar el proyecto en el directorio de su preferencia.
   2. Ejecutar en consola el comando `npm install` para instalar todas las dependencias requeridas.
   3. En otra pestaña de consola, ejecutar `mongod` para levantar una instancia de mongoDB.
-  4. Ejecutar en consola el comando `npm start`.
+  4. Ejecutar en consola el comando `npm start`. Se configurarán automáticamente las variables de entorno necesarias.
   5. Deberia ver en consola el siguiente mensaje: "Connected to database. Server Up and Running".
 
 # Frontend
