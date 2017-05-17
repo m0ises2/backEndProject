@@ -1,4 +1,5 @@
 const donorModel = require('./model');
+const suscripModel = require('../suscription/model');
 const excel = require('node-excel-export');
 let shortid = require('shortid');
 
@@ -121,11 +122,13 @@ function updateDonor( req, res ) {
 function deleteDonor( req, res ) {
   let donorId = req.params.donorId;
 
-  donorModel.findOneAndRemove({ donorId: donorId}, (err, removedDoc) => {
-    if (err) return res.status(500).send({message: `Error al realizar la actualiza
-                                                      ción del donante. Error: ${err}`});
+  donorModel.findOneAndRemove({ donorId: donorId }, (err, removedDoc) => {
+    if (err) return res.status(500).send({message: `Error al realizar el borrado del donante. Error: ${err}`});
+      suscripModel.remove( { donorId: removedDoc._id }, err => {
+          if (err) return res.status(500).send({message: `Error al realizar el borrado del donante. Error: ${err}`});
 
-    res.status(200).send({ donor: removedDoc });
+          res.status(200).send( { donor: removedDoc } );
+      } );
   });
 }
 

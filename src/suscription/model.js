@@ -7,7 +7,7 @@ const suscriptionSchema = Schema({
     required: true
   },
   donorId: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Donor',
   },
   amount: {
