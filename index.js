@@ -7,7 +7,7 @@ const assert = require('assert');
 mongoose.connect(config.db, (err, db) => {
     assert.equal(null, err);
 
-    app.listen(config.port, () => {
+    app.listen(3000, () => {
         console.log('Connected to database. Server Up and Running');
     });
 });
