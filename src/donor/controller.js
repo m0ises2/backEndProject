@@ -1,6 +1,6 @@
 const donorModel = require('./model');
-let shortid = require('shortid');
 const excel = require('node-excel-export');
+let shortid = require('shortid');
 
 // Private Functions:
 function createExcel( data ) {
@@ -56,7 +56,7 @@ function createExcel( data ) {
       name: elem.name,
       lastname: elem.lastname,
       email: elem.email,
-      birthdate: elem.birthdate,
+      birthdate: `${elem.birthdate.getFullYear()}-${elem.birthdate.getMonth() + 1}-${elem.birthdate.getDate()}`,
       phone: elem.phone,
       gender: elem.gender
     }
@@ -76,7 +76,7 @@ function createExcel( data ) {
 
 function getAllDonors( req, res ) {
   donorModel.find({}, (err, donors) => {
-    if (err) return res.status(500).send({message: `Error al realizar la petición: ${error}`});
+    if (err) return res.status(500).send({message: `Error al realizar la petición: ${err}`});
     if (!donors) return res.status(404).send({message: `No existen Donantes`});
 
     res.status(200).send({ donors: donors });
@@ -99,7 +99,7 @@ function saveDonor( req, res ) {
   donor.updatedAt = new Date();
 
   donor.save( (err, donorStored) => {
-    if (err) return res.status(500).send(`Error al guardar el user en la base de datos ${error}`);
+    if (err) return res.status(500).send(`Error al guardar el user en la base de datos ${err}`);
 
     res.status(200).send({ donor: donorStored });
   });
@@ -130,7 +130,7 @@ function deleteDonor( req, res ) {
 }
 
 function getOrderedExcel ( req, res ) {
-  donorModel.find({}).sort({ name: 1 }).exec( (err, docs) => {
+  donorModel.find({}).sort({ name: 1, lastname: 1 }).exec( (err, docs) => {
     let report = createExcel(docs);
 
     res.attachment('orderedDonors.xlsx');

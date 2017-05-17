@@ -2,6 +2,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const suscriptionSchema = Schema({
+  suscriptionId: {
+    type: String,
+    required: true
+  },
   donorId: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Donor',
@@ -23,10 +27,17 @@ const suscriptionSchema = Schema({
     type: Number,
     required: true
   },
+  initData: {
+    type: Date
+  },
   createdAt: {
     type: Date,
     default: Date.now(),
     required: true
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now
   }
 });
 

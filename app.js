@@ -5,7 +5,7 @@ const config = require('./config');
 // Imports de las rutas:
 const userRoutes = require('./routes/user');
 const donorRoutes = require('./routes/donor');
-//const suscriptionRoutes = require('./routes/suscription');
+const suscriptionRoutes = require('./routes/suscription');
 
 const app = express();
 
@@ -38,6 +38,6 @@ app.use(bodyParser.json());
 // Prefijos de rutas:
 app.use('/user', userRoutes);
 app.use('/donor', donorRoutes);
-//.use('/suscription', suscriptionRoutes);
+app.use('/suscription', suscriptionRoutes);
 
 module.exports = app;

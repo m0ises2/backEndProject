@@ -69,7 +69,8 @@ function canLogin( req, res ) {
     res.status(200).send({ acceptedLogin: false });
 
   });*/
-
+  
+  //console.log(encryptedPass);
   if (loginInfo.client === process.env.CLIENT && loginInfo.email === process.env.EMAIL && SHA256(loginInfo.password).toString() === SHA256(process.env.PASSWORD).toString()) {
     res.status(200).send({ acceptedLogin: true });
   } else {
